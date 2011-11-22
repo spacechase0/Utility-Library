@@ -41,6 +41,8 @@ set( INC ${INCROOT}/util/Base64.h
 		 ${INCROOT}/util/Md5.h
 		 ${INCROOT}/util/Misc.h 
 		 ${INCROOT}/util/Tokenize.h
+		 ${INCROOT}/util/QuadTree.h
+		 ${INCROOT}/util/QuadTree.inl
 		 ${INCROOT}/util/unsorted_map.h )
 
 set( SRC ${SRCROOT}/util/Base64.cpp
