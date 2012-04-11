@@ -43,7 +43,9 @@ set( INC ${INCROOT}/util/Base64.h
 		 ${INCROOT}/util/Tokenize.h
 		 ${INCROOT}/util/QuadTree.h
 		 ${INCROOT}/util/QuadTree.inl
-		 ${INCROOT}/util/unsorted_map.h )
+		 ${INCROOT}/util/unsorted_map.h
+		 ${INCROOT}/util/VersionManager.h
+		 ${INCROOT}/util/VersionManager.inl )
 
 set( SRC ${SRCROOT}/util/Base64.cpp
 		 ${SRCROOT}/util/Endian.cpp
