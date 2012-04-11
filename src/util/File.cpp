@@ -28,7 +28,7 @@
 
 namespace util
 {
-	std::string GetFileContents( const std::string& filename )
+	std::string getFileContents( const std::string& filename )
 	{
 		std::fstream file( filename, std::fstream::in );
 		if ( !file )

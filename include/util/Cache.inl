@@ -37,13 +37,13 @@ Cache< T >::Cache( T theCached )
 }
 
 template < class T >
-T& Cache< T >::Get()
+T& Cache< T >::get()
 {
 	return cached;
 }
 
 template < class T >
-const T& Cache< T >::Get() const
+const T& Cache< T >::get() const
 {
 	return cached;
 }
@@ -61,7 +61,7 @@ Cache< T >::operator const T&() const
 }
 
 template < class T >
-void Cache< T >::Set( const T& theCached )
+void Cache< T >::set( const T& theCached )
 {
 	cached = theCached;
 	isValid = true;
@@ -75,7 +75,7 @@ Cache< T >& Cache< T >::operator =( const T& theCached )
 }
 
 template < class T >
-bool Cache< T >::IsValid() const
+bool Cache< T >::isValid() const
 {
 	return isValid;
 }
@@ -87,7 +87,7 @@ Cache< T >::operator bool() const
 }
 
 template < class T >
-void Cache< T >::Invalidate()
+void Cache< T >::invalidate()
 {
 	isValid = false;
 }

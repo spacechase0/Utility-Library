@@ -47,12 +47,12 @@ namespace util
 			// TO DO: Copy, assignment, move(?)
 			~QuadTree();
 			
-			CoordinatePair GetPosition() const;
-			CoordinatePair GetSize() const;
-			bool Contains( Coordinate x, Coordinate y ) const;
-			bool Contains( CoordinatePair pos ) const;
-			void Resize( Coordinate width, Coordinate height );
-			void Resize( CoordinatePair size );
+			CoordinatePair getPosition() const;
+			CoordinatePair getSize() const;
+			bool contains( Coordinate x, Coordinate y ) const;
+			bool contains( CoordinatePair pos ) const;
+			void resize( Coordinate width, Coordinate height );
+			void resize( CoordinatePair size );
 			
 			enum Quadrant : sf::Uint8
 			{
@@ -62,23 +62,23 @@ namespace util
 				BottomRight,
 			};
 			
-			QuadTree< T, C >* GetQuadrant( Quadrant quadrant );
-			QuadTree< T, C >* FindQuadrant( Coordinate x, Coordinate y );
-			const QuadTree< T, C >* GetQuadrant( Quadrant quadrant ) const;
-			const QuadTree< T, C >* FindQuadrant( Coordinate x, Coordinate y ) const;
+			QuadTree< T, C >* getQuadrant( Quadrant quadrant );
+			QuadTree< T, C >* findQuadrant( Coordinate x, Coordinate y );
+			const QuadTree< T, C >* getQuadrant( Quadrant quadrant ) const;
+			const QuadTree< T, C >* findQuadrant( Coordinate x, Coordinate y ) const;
 			
-			bool IsSplit() const;
-			void Split();
-			void Split( Quadrant quadrant );
-			void Join();
+			bool isSplit() const;
+			void split();
+			void split( Quadrant quadrant );
+			void join();
 			
-			void AddObject( TypePtr object );
-			void RemoveObject( TypePtr object );
-			const std::set< TypePtr >& GetObjects() const;
-			size_t GetObjectCount() const;
+			void addObject( TypePtr object );
+			void removeObject( TypePtr object );
+			const std::set< TypePtr >& getObjects() const;
+			size_t getObjectCount() const;
 			
-			void Update();
-			void UpdateQuadrants();
+			void update();
+			void updateQuadrants();
 			
 		private:
 			QuadTree( QuadTree* parent );

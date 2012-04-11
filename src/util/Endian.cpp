@@ -26,7 +26,7 @@
 
 namespace util
 {
-	float SwapFloat( float f )
+	float swapFloat( float f )
 	{
 		union
 		{
@@ -42,7 +42,7 @@ namespace util
 		return dat2.f2;
 	}
 
-	double SwapDouble( double d )
+	double swapDouble( double d )
 	{
 		union
 		{

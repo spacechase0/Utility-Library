@@ -38,7 +38,7 @@ namespace util
 	
 	template< typename T, size_t S = sizeof( T ) >
 	typename std::enable_if< std::is_integral< T >::value, T >::type
-	SwapBytes( T t )
+	swapBytes( T t )
 	{
 		T toReturn;
 		
@@ -53,7 +53,7 @@ namespace util
 	
 	template< typename T, size_t S = sizeof( T ) >
 	typename std::enable_if< std::is_floating_point< T >::value, T >::type
-	SwapBytes( T t )
+	swapBytes( T t )
 	{
 		union
 		{
@@ -71,7 +71,7 @@ namespace util
 	}
 	
 	template< typename T >
-	T SwapBytes2( T t )
+	T swapBytes2( T t )
 	{
 		unsigned char byte1, byte2;
 
@@ -82,7 +82,7 @@ namespace util
 	}
 
 	template< typename T >
-	T SwapBytes4( T t )
+	T swapBytes4( T t )
 	{
 		unsigned char byte1, byte2, byte3, byte4;
 
@@ -95,7 +95,7 @@ namespace util
 	}
 
 	template< typename T >
-	T SwapBytes8( T t )
+	T swapBytes8( T t )
 	{
 		unsigned char byte1, byte2, byte3, byte4, byte5, byte6, byte7, byte8;
 
@@ -113,8 +113,8 @@ namespace util
 		return result;
 	}
 
-	float SwapFloat( float f );
-	double SwapDouble( double d );
+	float swapFloat( float f );
+	double swapDouble( double d );
 }
 
 #endif // ENDIAN_H

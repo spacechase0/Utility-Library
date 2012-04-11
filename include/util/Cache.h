@@ -35,16 +35,16 @@ namespace util
 			Cache( T theCached );
 			
 			T& Get();
-			const T& Get() const;
+			const T& get() const;
 			operator T&();
 			operator const T&() const;
 			
-			void Set( const T& theCached );
+			void set( const T& theCached );
 			Cache< T >& operator =( const T& theCached );
 			
-			bool IsValid() const;
+			bool isValid() const;
 			operator bool() const;
-			void Invalidate();
+			void invalidate();
 		
 		protected:
 			T cached;

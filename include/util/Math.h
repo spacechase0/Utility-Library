@@ -28,11 +28,11 @@
 namespace util
 {
 	static const float pi = 3.14159265;
-	inline float RadiansToDegrees( float radians )
+	inline float radiansToDegrees( float radians )
 	{
 		return radians * ( 180 / pi );
 	}
-	inline float DegreesToRadians( float degrees )
+	inline float degreesToRadians( float degrees )
 	{
 		return degrees * ( pi / 180 );
 	}

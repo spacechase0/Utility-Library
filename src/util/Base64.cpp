@@ -41,7 +41,7 @@ namespace util
 			return (isalnum(c) || (c == '+') || (c == '/'));
 		}
 
-		std::string Encode( unsigned char const* bytes_to_encode, unsigned int in_len ) {
+		std::string encode( unsigned char const* bytes_to_encode, unsigned int in_len ) {
 			std::string ret;
 			int i = 0;
 			int j = 0;
@@ -84,7 +84,7 @@ namespace util
 
 		}
 
-		std::string Decode( const std::string& encoded_string ) {
+		std::string decode( const std::string& encoded_string ) {
 			int in_len = encoded_string.size();
 			int i = 0;
 			int j = 0;

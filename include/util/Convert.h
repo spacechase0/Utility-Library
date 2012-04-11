@@ -32,7 +32,7 @@
 namespace util
 {
 	template< typename T >
-	T FromString( const std::string& str )
+	T fromString( const std::string& str )
 	{
 		T tmp;
 		
@@ -44,7 +44,7 @@ namespace util
 	}
 	
 	template< typename T >
-	T FromStringHex( const std::string& str )
+	T fromStringHex( const std::string& str )
 	{
 		T tmp;
 		
@@ -56,7 +56,7 @@ namespace util
 	}
 	
 	template< typename T >
-	std::string ToString( const T& t )
+	std::string toString( const T& t )
 	{
 		std::stringstream ss;
 		ss << t;
@@ -64,7 +64,7 @@ namespace util
 	}
 	
 	template< typename T >
-	std::string ToStringHex( const T& t )
+	std::string toStringHex( const T& t )
 	{
 		std::stringstream ss;
 		ss << std::hex << t;

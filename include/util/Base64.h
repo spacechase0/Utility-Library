@@ -31,8 +31,8 @@ namespace util
 {
 	namespace b64
 	{
-		std::string Encode( unsigned char const* , unsigned int len );
-		std::string Decode( const std::string& s );
+		std::string encode( unsigned char const* , unsigned int len );
+		std::string decode( const std::string& s );
 	}
 }
 

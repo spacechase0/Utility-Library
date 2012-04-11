@@ -40,16 +40,16 @@ namespace util
 			IniFile();
 			IniFile( const std::string& filename );
 			
-			bool LoadFromFile( const std::string& filename );
-			bool SaveToFile( const std::string& filename, bool saveEmpty = true );
+			bool loadFromFile( const std::string& filename );
+			bool saveToFile( const std::string& filename, bool saveEmpty = true );
 			
 			const Section& operator[] ( const std::string& str ) const;
 			Section& operator[] ( const std::string& str );
 			
-			const SectionMap& GetSections() const;
-			SectionMap& GetSections();
+			const SectionMap& getSections() const;
+			SectionMap& getSections();
 			
-			void DeleteSection( const std::string& sectionName );
+			void deleteSection( const std::string& sectionName );
 			
 		private:
 			SectionMap sections;

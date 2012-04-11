@@ -26,7 +26,7 @@
 
 namespace util
 {
-	std::vector< std::string > Tokenize( const std::string& str, const std::string& symbol )
+	std::vector< std::string > tokenize( const std::string& str, const std::string& symbol )
 	{
 		std::vector< std::string > toReturn;
 

@@ -35,10 +35,10 @@ namespace util
 	
 	IniFile::IniFile( const std::string& filename )
 	{
-		LoadFromFile( filename );
+		loadFromFile( filename );
 	}
 	
-	bool IniFile::LoadFromFile( const std::string& filename )
+	bool IniFile::loadFromFile( const std::string& filename )
 	{
 		std::fstream file( filename, std::fstream::in );
 		if ( !file )
@@ -95,7 +95,7 @@ namespace util
 		return true;
 	}
 	
-	bool IniFile::SaveToFile( const std::string& filename, bool saveEmpty )
+	bool IniFile::saveToFile( const std::string& filename, bool saveEmpty )
 	{
 		std::fstream file( filename, std::fstream::out | std::fstream::trunc );
 		if ( !file )
@@ -141,17 +141,17 @@ namespace util
 		return sections[ str ];
 	}
 	
-	const IniFile::SectionMap& IniFile::GetSections() const
+	const IniFile::SectionMap& IniFile::getSections() const
 	{
 		return sections;
 	}
 	
-	IniFile::SectionMap& IniFile::GetSections()
+	IniFile::SectionMap& IniFile::getSections()
 	{
 		return sections;
 	}
 	
-	void IniFile::DeleteSection( const std::string& sectionName )
+	void IniFile::deleteSection( const std::string& sectionName )
 	{
 		if ( sections.find( sectionName ) != sections.end() )
 		{
