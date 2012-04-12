@@ -7,6 +7,15 @@ if ( NOT CMAKE_BUILD_TYPE )
 	set( CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build (Debug or Release)" FORCE )
 endif()
 
+# Project
+project( "Utility Library" )
+
+set( VERSION_MAJOR 1 )
+set( VERSION_MINOR 0 )
+set( VERSION_PATCH 0 )
+
+include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/include )
+
 # SFML
 find_package( SFML )
 if ( SFML_FOUND )
@@ -17,15 +26,6 @@ endif()
 
 # Misc
 set( CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=gnu++0x" )
-
-# Project
-project( "Utility Library" )
-
-set( VERSION_MAJOR 1 )
-set( VERSION_MINOR 0 )
-set( VERSION_PATCH 0 )
-
-include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/include )
 
 # Build
 set( INCROOT ${PROJECT_SOURCE_DIR}/include )
@@ -49,7 +49,7 @@ set( INC ${INCROOT}/util/Base64.h
 
 set( SRC ${SRCROOT}/util/Base64.cpp
 		 ${SRCROOT}/util/Endian.cpp
-		 ${SRCROOT}/util/File.cpp
+		 ${SRCROOT}/util/Misc.cpp
 		 ${SRCROOT}/util/IniFile.cpp
 		 ${SRCROOT}/util/Md5.cpp
 		 ${SRCROOT}/util/Tokenize.cpp )

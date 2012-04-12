@@ -22,8 +22,8 @@
 //
 ////////////////////////////////////////////////////////////
 
-#ifndef UTIL_FILE_H
-#define UTIL_FILE_H
+#ifndef UTIL_MISC_H
+#define UTIL_MISC_H
 
 #include <SFML/System.hpp>
 #include <string>
@@ -31,7 +31,7 @@
 
 namespace util
 {
-	std::string GetFileContents( const std::string& filename );
+	std::string getFileContents( const std::string& filename );
 	
 	template< typename T >
 	T distance( sf::Vector2< T > t1, sf::Vector2< T > t2 )
@@ -40,4 +40,4 @@ namespace util
 	}
 }
 
-#endif // UTIL_FILE_H
+#endif // UTIL_MISC_H
