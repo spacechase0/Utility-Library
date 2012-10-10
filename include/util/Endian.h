@@ -40,7 +40,7 @@ namespace util
 	typename std::enable_if< std::is_integral< T >::value, T >::type
 	swapBytes( T t )
 	{
-		T toReturn;
+		T toReturn = 0;
 		
 		for ( size_t i = 0; i < S; ++i )
 		{
