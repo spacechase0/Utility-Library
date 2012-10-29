@@ -32,10 +32,13 @@ set( INCROOT ${PROJECT_SOURCE_DIR}/include )
 set( SRCROOT ${PROJECT_SOURCE_DIR}/src )
 
 set( INC ${INCROOT}/util/Base64.h
+         ${INCROOT}/util/BindTuple.hpp
 		 ${INCROOT}/util/Cache.h
 		 ${INCROOT}/util/Cache.inl
 		 ${INCROOT}/util/Convert.h
+		 ${INCROOT}/util/Crc32.hpp
 		 ${INCROOT}/util/Endian.h
+		 ${INCROOT}/util/GenericPlaceholder.hpp
 		 ${INCROOT}/util/IniFile.h
 		 ${INCROOT}/util/Math.h
 		 ${INCROOT}/util/Md5.h
@@ -48,6 +51,7 @@ set( INC ${INCROOT}/util/Base64.h
 		 ${INCROOT}/util/VersionManager.inl )
 
 set( SRC ${SRCROOT}/util/Base64.cpp
+         ${SRCROOT}/util/Crc32.cpp
 		 ${SRCROOT}/util/Endian.cpp
 		 ${SRCROOT}/util/Misc.cpp
 		 ${SRCROOT}/util/IniFile.cpp
