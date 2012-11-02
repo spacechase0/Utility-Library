@@ -10,8 +10,11 @@ namespace util
 	// Instead of:
 	// 	FuncTraits< ... >::Arg< ... >::Type
 	// Or at least, that's how my version of GCC acts
+	template < typename T >
+	class FuncTraits;
+	
 	template< typename RET, typename... ARGS >
-	class FuncTraits
+	class FuncTraits< RET ( ARGS... ) >
 	{
 		public:
 			typedef RET Func( ARGS... );
@@ -28,14 +31,19 @@ namespace util
 					typedef typename std::tuple_element< NUM, std::tuple< ARGS... > >::type Type;
 			};
 	};
-
+	
 	template< typename RET, typename... ARGS >
-	class FuncTraits< RET ( ARGS... ) > : public FuncTraits< RET, ARGS... >
+	class FuncTraits< RET ( * ) ( ARGS... ) > : public FuncTraits< RET ( ARGS... ) >
 	{
 	};
 
-	template< typename RET, typename... ARGS >
-	class FuncTraits< RET (*) ( ARGS... ) > : public FuncTraits< RET ( ARGS... ) >
+	template< class CLASS, typename RET, typename... ARGS >
+	class FuncTraits< RET ( CLASS::* ) ( ARGS... ) > : public FuncTraits< RET ( CLASS*, ARGS... ) >
+	{
+	};
+
+	template< class CLASS, typename RET, typename... ARGS >
+	class FuncTraits< RET ( CLASS::* ) ( ARGS... ) const > : public FuncTraits< RET ( const CLASS*, ARGS... ) >
 	{
 	};
 }
