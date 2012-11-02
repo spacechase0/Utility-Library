@@ -43,6 +43,7 @@ set( INC ${INCROOT}/util/Base64.h
 		 ${INCROOT}/util/IniFile.h
 		 ${INCROOT}/util/Math.h
 		 ${INCROOT}/util/Md5.h
+		 ${INCROOT}/util/MemberFunctionProxy.hpp
 		 ${INCROOT}/util/Misc.h 
 		 ${INCROOT}/util/Tokenize.h
 		 ${INCROOT}/util/QuadTree.h
