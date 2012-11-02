@@ -22,7 +22,10 @@ namespace util
 			
 			typedef RET Return;
 			
+			typedef void Class;
+			
 			static constexpr int ArgCount = sizeof...( ARGS );
+			typedef std::tuple< ARGS... > ArgTuple;
 			
 			template< int NUM >
 			class Arg
@@ -40,11 +43,45 @@ namespace util
 	template< class CLASS, typename RET, typename... ARGS >
 	class FuncTraits< RET ( CLASS::* ) ( ARGS... ) > : public FuncTraits< RET ( CLASS*, ARGS... ) >
 	{
+		public:
+			typedef CLASS Class;
+			
+			// Normal = before we added the class parameter
+			
+			typedef RET NormalFunc( ARGS... );
+			typedef NormalFunc* NormalFuncPtr;
+			
+			static constexpr int NormalArgCount = sizeof...( ARGS );
+			typedef std::tuple< ARGS... > NormalArgTuple;
+			
+			template< int NUM >
+			class NormalArg
+			{
+				public:
+					typedef typename std::tuple_element< NUM, std::tuple< ARGS... > >::type Type;
+			};
 	};
 
 	template< class CLASS, typename RET, typename... ARGS >
 	class FuncTraits< RET ( CLASS::* ) ( ARGS... ) const > : public FuncTraits< RET ( const CLASS*, ARGS... ) >
 	{
+		public:
+			typedef CLASS Class;
+			
+			// Normal = before we added the class parameter
+			
+			typedef RET NormalFunc( ARGS... );
+			typedef NormalFunc* NormalFuncPtr;
+			
+			static constexpr int NormalArgCount = sizeof...( ARGS );
+			typedef std::tuple< ARGS... > NormalArgTuple;
+			
+			template< int NUM >
+			class NormalArg
+			{
+				public:
+					typedef typename std::tuple_element< NUM, std::tuple< ARGS... > >::type Type;
+			};
 	};
 }
 
