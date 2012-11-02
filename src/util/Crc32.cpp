@@ -10,7 +10,7 @@ namespace
 	int crc_table_computed = 0;
 
 	/* Make the table for a fast CRC. */
-	void make_crc_table(void)
+	void make_crc_table(sf::Uint32 magic)
 	{
 		unsigned long c;
 
@@ -19,7 +19,7 @@ namespace
 			c = (unsigned long) n;
 			for (k = 0; k < 8; k++) {
 				if (c & 1) {
-					c = 0xedb88320L ^ (c >> 1);
+					c = magic ^ (c >> 1);
 				} else {
 					c = c >> 1;
 				}
@@ -43,13 +43,12 @@ namespace
 	if (crc != original_crc) error();
 	*/
 	unsigned long update_crc(unsigned long crc,
-	const unsigned char *buf, int len)
+	const unsigned char *buf, int len, sf::Uint32 magic)
 	{
 		unsigned long c = crc ^ 0xffffffffL;
 		int n;
 
-		if (!crc_table_computed)
-			make_crc_table();
+		make_crc_table( magic );
 		for (n = 0; n < len; n++) {
 			c = crc_table[(c ^ buf[n]) & 0xff] ^ (c >> 8);
 		}
@@ -57,16 +56,16 @@ namespace
 	}
 
 	/* Return the CRC of the bytes buf[0..len-1]. */
-	unsigned long crc(const unsigned char *buf, int len)
+	unsigned long crc(const unsigned char *buf, int len, sf::Uint32 magic)
 	{
-		return update_crc(0L, buf, len);
+		return update_crc(0L, buf, len, magic);
 	}
 }
 
 namespace util
 {
-	unsigned long crc32( const std::string& str )
+	unsigned long crc32( const std::string& str, sf::Uint32 magic )
 	{
-		return crc( reinterpret_cast< const unsigned char* >( &str[ 0 ] ), str.length() );
+		return crc( reinterpret_cast< const unsigned char* >( &str[ 0 ] ), str.length(), magic );
 	}
 }
