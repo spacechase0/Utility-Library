@@ -38,6 +38,7 @@ set( INC ${INCROOT}/util/Base64.h
 		 ${INCROOT}/util/Convert.h
 		 ${INCROOT}/util/Crc32.hpp
 		 ${INCROOT}/util/Endian.h
+		 ${INCROOT}/util/FuncTraits.hpp
 		 ${INCROOT}/util/GenericPlaceholder.hpp
 		 ${INCROOT}/util/IniFile.h
 		 ${INCROOT}/util/Math.h
