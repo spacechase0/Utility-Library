@@ -23,6 +23,7 @@ namespace util
 			typedef RET Return;
 			
 			typedef void Class;
+			static constexpr bool ClassConst = false;
 			
 			static constexpr int ArgCount = sizeof...( ARGS );
 			typedef std::tuple< ARGS... > ArgTuple;
@@ -45,6 +46,7 @@ namespace util
 	{
 		public:
 			typedef CLASS Class;
+			static constexpr bool ClassConst = false;
 			
 			// Normal = before we added the class parameter
 			
@@ -66,7 +68,8 @@ namespace util
 	class FuncTraits< RET ( CLASS::* ) ( ARGS... ) const > : public FuncTraits< RET ( const CLASS*, ARGS... ) >
 	{
 		public:
-			typedef CLASS Class;
+			typedef const CLASS Class;
+			static constexpr bool ClassConst = true;
 			
 			// Normal = before we added the class parameter
 			
