@@ -22,72 +22,75 @@
 //
 ////////////////////////////////////////////////////////////
 
-template < class T >
-Cache< T >::Cache()
-   : cached(),
-     isValid( false )
+namespace util
 {
-}
+	template < class T >
+	Cache< T >::Cache()
+	   : cached(),
+		 valid( false )
+	{
+	}
 
-template < class T >
-Cache< T >::Cache( T theCached )
-   : cached( theCached ),
-     isValid( true )
-{
-}
+	template < class T >
+	Cache< T >::Cache( T theCached )
+	   : cached( theCached ),
+		 valid( true )
+	{
+	}
 
-template < class T >
-T& Cache< T >::get()
-{
-	return cached;
-}
+	template < class T >
+	T& Cache< T >::get()
+	{
+		return cached;
+	}
 
-template < class T >
-const T& Cache< T >::get() const
-{
-	return cached;
-}
+	template < class T >
+	const T& Cache< T >::get() const
+	{
+		return cached;
+	}
 
-template < class T >
-Cache< T >::operator T&()
-{
-	return cached;
-}
+	template < class T >
+	Cache< T >::operator T&()
+	{
+		return cached;
+	}
 
-template < class T >
-Cache< T >::operator const T&() const
-{
-	return cached;
-}
+	template < class T >
+	Cache< T >::operator const T&() const
+	{
+		return cached;
+	}
 
-template < class T >
-void Cache< T >::set( const T& theCached )
-{
-	cached = theCached;
-	isValid = true;
-}
+	template < class T >
+	void Cache< T >::set( const T& theCached )
+	{
+		cached = theCached;
+		valid = true;
+	}
 
-template < class T >
-Cache< T >& Cache< T >::operator =( const T& theCached )
-{
-	cached = theCached;
-	isValid = true;
-}
+	template < class T >
+	Cache< T >& Cache< T >::operator =( const T& theCached )
+	{
+		cached = theCached;
+		valid = true;
+	}
 
-template < class T >
-bool Cache< T >::isValid() const
-{
-	return isValid;
-}
+	template < class T >
+	bool Cache< T >::isValid() const
+	{
+		return valid;
+	}
 
-template < class T >
-Cache< T >::operator bool() const
-{
-	return isValid;
-}
+	template < class T >
+	Cache< T >::operator bool() const
+	{
+		return valid;
+	}
 
-template < class T >
-void Cache< T >::invalidate()
-{
-	isValid = false;
+	template < class T >
+	void Cache< T >::invalidate()
+	{
+		valid = false;
+	}
 }

@@ -22,20 +22,22 @@
 //
 ////////////////////////////////////////////////////////////
 
-#ifndef UTIL_MATH_H
-#define UTIL_MATH_H
+#include <util/String.hpp>
 
 namespace util
 {
-	static const float pi = 3.14159265;
-	inline float radiansToDegrees( float radians )
+	std::vector< std::string > tokenize( const std::string& str, const std::string& symbol )
 	{
-		return radians * ( 180 / pi );
-	}
-	inline float degreesToRadians( float degrees )
-	{
-		return degrees * ( pi / 180 );
+		std::vector< std::string > toReturn;
+
+		size_t start = 0;
+		for ( size_t found = str.find( symbol, start ); found != std::string::npos; found = str.find( symbol, start ) )
+		{
+			toReturn.push_back( str.substr( start, found - start ) );
+			start = found + symbol.length();
+		}
+		toReturn.push_back( str.substr( start ) );
+
+		return toReturn;
 	}
 }
-
-#endif // UTIL_MATH_H

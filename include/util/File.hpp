@@ -22,33 +22,14 @@
 //
 ////////////////////////////////////////////////////////////
 
-#include <util/Misc.h>
+#ifndef UTIL_STRING_HPP
+#define UTIL_STRING_HPP
 
-#include <fstream>
+#include <string>
 
 namespace util
 {
-	std::string getFileContents( const std::string& filename )
-	{
-		std::fstream file( filename, std::fstream::in );
-		if ( !file )
-		{
-			return "";
-		}
-		
-		std::string contents = "";
-		while ( true )
-		{
-			std::string line;
-			std::getline( file, line );
-			if ( file.eof() )
-			{
-				break;
-			}
-			
-			contents += line;
-		}
-		
-		return contents;
-	}
+	std::string getFileContents( const std::string& filename, bool binary = false );
 }
+
+#endif // UTIL_STRING_HPP

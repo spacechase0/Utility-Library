@@ -22,18 +22,17 @@
 //
 ////////////////////////////////////////////////////////////
 
-#ifndef UTIL_BASE64_H
-#define UTIL_BASE64_H
+#ifndef UTIL_MD5_HPP
+#define UTIL_MD5_HPP
 
 #include <string>
 
 namespace util
 {
-	namespace b64
-	{
-		std::string encode( unsigned char const* , unsigned int len );
-		std::string decode( const std::string& s );
-	}
+	// TODO: Make my own function. Is it even legal to include this (even though the .cpp
+	// file has their license, not mine)?
+	// http://www.zedwood.com/article/121/cpp-md5-function
+	std::string md5( const std::string& str );
 }
 
-#endif // UTIL_BASE64_H
+#endif // UTIL_MD5_HPP

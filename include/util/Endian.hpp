@@ -22,8 +22,8 @@
 //
 ////////////////////////////////////////////////////////////
 
-#ifndef ENDIAN_H
-#define ENDIAN_H
+#ifndef ENDIAN_HPP
+#define ENDIAN_HPP
 
 #include <SFML/System.hpp>
 #include <type_traits>
@@ -117,4 +117,4 @@ namespace util
 	double swapDouble( double d );
 }
 
-#endif // ENDIAN_H
+#endif // ENDIAN_HPP

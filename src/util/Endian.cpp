@@ -22,7 +22,7 @@
 //
 ////////////////////////////////////////////////////////////
 
-#include <util/Endian.h>
+#include <util/Endian.hpp>
 
 namespace util
 {

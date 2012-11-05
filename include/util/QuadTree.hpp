@@ -22,8 +22,8 @@
 //
 ////////////////////////////////////////////////////////////
 
-#ifndef UTIL_QUADTREE_H
-#define UTIL_QUADTREE_H
+#ifndef UTIL_QUADTREE_HPP
+#define UTIL_QUADTREE_HPP
 
 #include <SFML/System.hpp>
 #include <memory>
@@ -97,8 +97,8 @@ namespace util
 				QuadTree< T, C >* bottomRight;
 			} myQuadrants;
 	};
-	
-	#include "util/QuadTree.inl"
 }
 
-#endif // UTIL_QUADTREE_H
+#include "util/QuadTree.inl"
+
+#endif // UTIL_QUADTREE_HPP

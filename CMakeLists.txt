@@ -31,35 +31,34 @@ set( CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=gnu++0x" )
 set( INCROOT ${PROJECT_SOURCE_DIR}/include )
 set( SRCROOT ${PROJECT_SOURCE_DIR}/src )
 
-set( INC ${INCROOT}/util/Base64.h
+set( INC ${INCROOT}/util/Base64.hpp
          ${INCROOT}/util/BindTuple.hpp
-		 ${INCROOT}/util/Cache.h
+		 ${INCROOT}/util/Cache.hpp
 		 ${INCROOT}/util/Cache.inl
-		 ${INCROOT}/util/Convert.h
 		 ${INCROOT}/util/Crc32.hpp
-		 ${INCROOT}/util/Endian.h
+		 ${INCROOT}/util/Endian.hpp
+		 ${INCROOT}/util/File.hpp
 		 ${INCROOT}/util/FuncTraits.hpp
 		 ${INCROOT}/util/GenericPlaceholder.hpp
-		 ${INCROOT}/util/IniFile.h
-		 ${INCROOT}/util/Math.h
-		 ${INCROOT}/util/Md5.h
+		 ${INCROOT}/util/IniFile.hpp
+		 ${INCROOT}/util/Math.hpp
+		 ${INCROOT}/util/Md5.hpp
 		 ${INCROOT}/util/MemberFunctionProxy.hpp
 		 ${INCROOT}/util/MemberObjectType.hpp
-		 ${INCROOT}/util/Misc.h 
-		 ${INCROOT}/util/Tokenize.h
-		 ${INCROOT}/util/QuadTree.h
+		 ${INCROOT}/util/QuadTree.hpp
 		 ${INCROOT}/util/QuadTree.inl
-		 ${INCROOT}/util/unsorted_map.h
-		 ${INCROOT}/util/VersionManager.h
+		 ${INCROOT}/util/String.hpp
+		 ${INCROOT}/util/unsorted_map.hpp
+		 ${INCROOT}/util/VersionManager.hpp
 		 ${INCROOT}/util/VersionManager.inl )
 
 set( SRC ${SRCROOT}/util/Base64.cpp
          ${SRCROOT}/util/Crc32.cpp
 		 ${SRCROOT}/util/Endian.cpp
-		 ${SRCROOT}/util/Misc.cpp
+		 ${SRCROOT}/util/File.cpp
 		 ${SRCROOT}/util/IniFile.cpp
 		 ${SRCROOT}/util/Md5.cpp
-		 ${SRCROOT}/util/Tokenize.cpp )
+		 ${SRCROOT}/util/String.cpp )
 
 add_library( sc0-utility SHARED ${SRC} ${INC} )
 set_target_properties( sc0-utility PROPERTIES DEBUG_POSTFIX -d )

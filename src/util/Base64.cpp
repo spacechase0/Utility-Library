@@ -22,7 +22,7 @@
 //
 ////////////////////////////////////////////////////////////
 
-#include <util/Base64.h>
+#include <util/Base64.hpp>
 #include <iostream>
 
 // Stolen from http://www.adp-gmbh.ch/cpp/common/base64.html (only the functions names were changed).

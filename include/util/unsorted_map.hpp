@@ -22,14 +22,15 @@
 //
 ////////////////////////////////////////////////////////////
 
-#ifndef UTIL_UNSORTED_MAP_H
-#define UTIL_UNSORTED_MAP_H
+#ifndef UTIL_UNSORTED_MAP_HPP
+#define UTIL_UNSORTED_MAP_HPP
 
 #include <utility>
 #include <vector>
 
 namespace util
 {
+	// TO DO: Make this the interface of a map, NOT a vector :P
 	template< class TK, class TV, class Allocator = std::allocator< std::pair< TK, TV > > >
 	class unsorted_map
 	{
@@ -151,4 +152,4 @@ namespace util
 	};
 }
 
-#endif // UTIL_UNSORTED_MAP_H
+#endif // UTIL_UNSORTED_MAP_HPP

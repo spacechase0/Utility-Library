@@ -22,27 +22,18 @@
 //
 ////////////////////////////////////////////////////////////
 
-#ifndef UTIL_VERSIONMANAGER_H
-#define UTIL_VERSIONMANAGER_H
+#ifndef UTIL_BASE64_HPP
+#define UTIL_BASE64_HPP
 
-#include <array>
+#include <string>
 
 namespace util
 {
-	template < typename T >
-	class VersionManager
+	namespace b64
 	{
-		public:
-			void addVersion( T t );
-			T getVersion( std::size_t version ) const;
-			std::size_t getVersionCount() const;
-		
-		private:
-			std::vector< T > versions;
-	};
-	
-	#include <util/VersionManager.inl>
+		std::string encode( unsigned char const* , unsigned int len );
+		std::string decode( const std::string& s );
+	}
 }
 
-
-#endif // UTIL_VERSIONMANAGER_H
+#endif // UTIL_BASE64_HPP

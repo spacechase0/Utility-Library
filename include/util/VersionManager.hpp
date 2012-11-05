@@ -22,22 +22,28 @@
 //
 ////////////////////////////////////////////////////////////
 
-#include <util/Tokenize.h>
+#ifndef UTIL_VERSIONMANAGER_HPP
+#define UTIL_VERSIONMANAGER_HPP
+
+#include <array>
 
 namespace util
 {
-	std::vector< std::string > tokenize( const std::string& str, const std::string& symbol )
+	// TO DO: Bring in util::Registry from my other project, and make this based on that,
+	// with a few more functions
+	template < typename T >
+	class VersionManager
 	{
-		std::vector< std::string > toReturn;
-
-		size_t start = 0;
-		for ( size_t found = str.find( symbol, start ); found != std::string::npos; found = str.find( symbol, start ) )
-		{
-			toReturn.push_back( str.substr( start, found - start ) );
-			start = found + symbol.length();
-		}
-		toReturn.push_back( str.substr( start ) );
-
-		return toReturn;
-	}
+		public:
+			void addVersion( T t );
+			T getVersion( std::size_t version ) const;
+			std::size_t getVersionCount() const;
+		
+		private:
+			std::vector< T > versions;
+	};
 }
+
+#include <util/VersionManager.inl>
+
+#endif // UTIL_VERSIONMANAGER_HPP

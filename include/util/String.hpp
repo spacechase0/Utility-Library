@@ -22,15 +22,59 @@
 //
 ////////////////////////////////////////////////////////////
 
-#ifndef UTIL_TOKENIZE_H
-#define UTIL_TOKENIZE_H
+#ifndef UTIL_STRING_HPP
+#define UTIL_STRING_HPP
 
+#include <iomanip>
+#include <ios>
+#include <sstream>
 #include <string>
 #include <vector>
 
 namespace util
 {
+	namespace priv
+	{
+		template< typename... ARGS >
+		void applyManips( std::ios& stream, ARGS&&... args );
+		
+		template< typename T, typename... ARGS >
+		void applyManips( std::ios& stream, T&& t, ARGS&&... args )
+		{
+			stream << std::forward( t );
+			applyManips( stream, std::forward( args )... );
+		}
+		
+		void applyManips( std::ios& stream )
+		{
+		}
+	}
+	
 	std::vector< std::string > tokenize( const std::string& str, const std::string& symbol = "," );
+	
+	template< typename T, typename... ARGS >
+	T fromString( const std::string& str, ARGS&&... args )
+	{
+		T tmp;
+		
+		std::stringstream ss;
+		priv::applyManips( ss, std::forward( args )... );
+		ss << str;
+		ss >> tmp;
+		
+		return tmp;
+	}
+	
+	template< typename T, typename... ARGS >
+	std::string toString( const T& t, ARGS&&... args )
+	{
+		std::stringstream ss;
+		priv::applyManips( ss, std::forward( args )... );
+		ss << t;
+		return ss.str();
+	}
+	
+	// from/toStringHex -> from/toString( ..., std::hex )
 }
 
-#endif // UTIL_TOKENIZE_H
+#endif // UTIL_STRING_HPP

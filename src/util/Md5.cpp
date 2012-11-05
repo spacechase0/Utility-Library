@@ -34,7 +34,7 @@ documentation and/or software.
 #include <cstring>
 
 /* interface header */
-#include <util/Md5.h>
+#include <util/Md5.hpp>
 
 namespace util
 {

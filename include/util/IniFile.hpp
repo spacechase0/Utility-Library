@@ -22,22 +22,39 @@
 //
 ////////////////////////////////////////////////////////////
 
-#ifndef UTIL_MISC_H
-#define UTIL_MISC_H
+#ifndef UTIL_INIFILE_HPP
+#define UTIL_INIFILE_HPP
 
-#include <SFML/System.hpp>
 #include <string>
-#include <cmath>
+
+#include "util/unsorted_map.hpp"
 
 namespace util
 {
-	std::string getFileContents( const std::string& filename );
-	
-	template< typename T >
-	T distance( sf::Vector2< T > t1, sf::Vector2< T > t2 )
+	class IniFile
 	{
-		return std::sqrt( pow( t2.x - t1.x, 2 ) + pow( t2.y - t1.y, 2 ) );
-	}
+		public:
+			typedef util::unsorted_map< std::string, std::string > Section;
+			typedef util::unsorted_map< std::string, Section > SectionMap;
+			
+			IniFile();
+			IniFile( const std::string& filename );
+			
+			bool loadFromFile( const std::string& filename );
+			bool saveToFile( const std::string& filename, bool saveEmpty = true );
+			
+			const Section& operator[] ( const std::string& str ) const;
+			Section& operator[] ( const std::string& str );
+			
+			const SectionMap& getSections() const;
+			SectionMap& getSections();
+			
+			void deleteSection( const std::string& sectionName );
+			
+		private:
+			SectionMap sections;
+			static Section emptySection;
+	};
 }
 
-#endif // UTIL_MISC_H
+#endif // UTIL_INIFILE_HPP

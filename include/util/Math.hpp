@@ -22,54 +22,28 @@
 //
 ////////////////////////////////////////////////////////////
 
-#ifndef UTIL_CONVERT_H
-#define UTIL_CONVERT_H
-
-#include <sstream>
-#include <iomanip>
-#include <string>
+#ifndef UTIL_MATH_HPP
+#define UTIL_MATH_HPP
 
 namespace util
 {
-	template< typename T >
-	T fromString( const std::string& str )
+	constexpr float PI = 3.14159265;
+	
+	inline float radiansToDegrees( float radians )
 	{
-		T tmp;
-		
-		std::stringstream ss;
-		ss << str;
-		ss >> tmp;
-		
-		return tmp;
+		return radians * ( 180 / PI );
+	}
+	
+	inline float degreesToRadians( float degrees )
+	{
+		return degrees * ( PI / 180 );
 	}
 	
 	template< typename T >
-	T fromStringHex( const std::string& str )
+	T distance( sf::Vector2< T > t1, sf::Vector2< T > t2 )
 	{
-		T tmp;
-		
-		std::stringstream ss;
-		ss << std::hex << str;
-		ss >> tmp;
-		
-		return tmp;
-	}
-	
-	template< typename T >
-	std::string toString( const T& t )
-	{
-		std::stringstream ss;
-		ss << t;
-		return ss.str();
-	}
-	
-	template< typename T >
-	std::string toStringHex( const T& t )
-	{
-		std::stringstream ss;
-		ss << std::hex << t;
-		return ss.str();
+		return std::sqrt( pow( t2.x - t1.x, 2 ) + pow( t2.y - t1.y, 2 ) );
 	}
 }
 
-#endif // UTIL_CONVERT_H
+#endif // UTIL_MATH_HPP

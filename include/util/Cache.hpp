@@ -22,39 +22,37 @@
 //
 ////////////////////////////////////////////////////////////
 
-#ifndef UTIL_INIFILE_H
-#define UTIL_INIFILE_H
-
-#include <string>
-
-#include "util/unsorted_map.h"
+#ifndef UTIL_CACHE_HPP
+#define UTIL_CACHE_HPP
 
 namespace util
 {
-	class IniFile
+	// Is this really any use? :P
+	template < class T >
+	class Cache
 	{
 		public:
-			typedef util::unsorted_map< std::string, std::string > Section;
-			typedef util::unsorted_map< std::string, Section > SectionMap;
+			Cache();
+			Cache( T theCached );
 			
-			IniFile();
-			IniFile( const std::string& filename );
+			T& get();
+			const T& get() const;
+			operator T&();
+			operator const T&() const;
 			
-			bool loadFromFile( const std::string& filename );
-			bool saveToFile( const std::string& filename, bool saveEmpty = true );
+			void set( const T& theCached );
+			Cache< T >& operator =( const T& theCached );
 			
-			const Section& operator[] ( const std::string& str ) const;
-			Section& operator[] ( const std::string& str );
-			
-			const SectionMap& getSections() const;
-			SectionMap& getSections();
-			
-			void deleteSection( const std::string& sectionName );
-			
-		private:
-			SectionMap sections;
-			static Section emptySection;
+			bool isValid() const;
+			operator bool() const;
+			void invalidate();
+		
+		protected:
+			T cached;
+			bool valid;
 	};
 }
 
-#endif // UTIL_INIFILE_H
+#include "util/Cache.inl"
+
+#endif // UTIL_CACHE_HPP

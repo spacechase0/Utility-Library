@@ -22,7 +22,7 @@
 //
 ////////////////////////////////////////////////////////////
 
-#include <util/IniFile.h>
+#include <util/IniFile.hpp>
 #include <fstream>
 
 namespace util
