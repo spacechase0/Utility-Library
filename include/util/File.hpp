@@ -22,8 +22,8 @@
 //
 ////////////////////////////////////////////////////////////
 
-#ifndef UTIL_STRING_HPP
-#define UTIL_STRING_HPP
+#ifndef UTIL_FILE_HPP
+#define UTIL_FILE_HPP
 
 #include <string>
 
@@ -32,4 +32,4 @@ namespace util
 	std::string getFileContents( const std::string& filename, bool binary = false );
 }
 
-#endif // UTIL_STRING_HPP
+#endif // UTIL_FILE_HPP
