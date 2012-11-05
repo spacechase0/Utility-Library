@@ -45,7 +45,7 @@ namespace util
 			applyManips( stream, std::forward( args )... );
 		}
 		
-		void applyManips( std::ios& stream )
+		inline void applyManips( std::ios& stream )
 		{
 		}
 	}
