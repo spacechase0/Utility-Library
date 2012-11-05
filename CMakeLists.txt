@@ -47,6 +47,7 @@ set( INC ${INCROOT}/util/Base64.hpp
 		 ${INCROOT}/util/MemberObjectType.hpp
 		 ${INCROOT}/util/QuadTree.hpp
 		 ${INCROOT}/util/QuadTree.inl
+		 ${INCROOT}/util/StreamBufferPreserver.hpp
 		 ${INCROOT}/util/String.hpp
 		 ${INCROOT}/util/unsorted_map.hpp
 		 ${INCROOT}/util/VersionManager.hpp
@@ -58,7 +59,8 @@ set( SRC ${SRCROOT}/util/Base64.cpp
 		 ${SRCROOT}/util/File.cpp
 		 ${SRCROOT}/util/IniFile.cpp
 		 ${SRCROOT}/util/Md5.cpp
-		 ${SRCROOT}/util/String.cpp )
+		 ${SRCROOT}/util/String.cpp
+		 ${SRCROOT}/util/StreamBufferPreserver.cpp )
 
 add_library( sc0-utility SHARED ${SRC} ${INC} )
 set_target_properties( sc0-utility PROPERTIES DEBUG_POSTFIX -d )
