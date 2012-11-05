@@ -36,17 +36,21 @@ namespace util
 	namespace priv
 	{
 		template< typename... ARGS >
-		void applyManips( std::ios& stream, ARGS&&... args );
-		
-		template< typename T, typename... ARGS >
-		void applyManips( std::ios& stream, T&& t, ARGS&&... args )
+		void applyManips( std::ios& stream, ARGS&... args )
 		{
-			stream << std::forward( t );
-			applyManips( stream, std::forward( args )... );
 		}
 		
-		inline void applyManips( std::ios& stream )
+		template< typename T, typename... ARGS >
+		inline void applyManips( std::ios& stream, T& t, ARGS&... args )
 		{
+			t( stream );
+			applyManips( stream, t, args... );
+		}
+		
+		template< typename T >
+		inline void applyManips( std::ios& stream, T& t )
+		{
+			t( stream );
 		}
 	}
 	
@@ -58,7 +62,7 @@ namespace util
 		T tmp;
 		
 		std::stringstream ss;
-		priv::applyManips( ss, std::forward( args )... );
+		priv::applyManips( ss, args... );
 		ss << str;
 		ss >> tmp;
 		
@@ -66,10 +70,10 @@ namespace util
 	}
 	
 	template< typename T, typename... ARGS >
-	std::string toString( const T& t, ARGS&&... args )
+	std::string toString( const T& t, ARGS&... args )
 	{
 		std::stringstream ss;
-		priv::applyManips( ss, std::forward( args )... );
+		priv::applyManips( ss, args... );
 		ss << t;
 		return ss.str();
 	}
