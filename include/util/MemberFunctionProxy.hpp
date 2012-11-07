@@ -24,7 +24,7 @@ namespace util
 		 * runtime usage (like. you can't using parameters in templates).
 		 **/
 		template< typename CLASSPTR, typename PTRTYPE, PTRTYPE PTR, typename... ARGS >
-		typename util::FuncTraits< PTRTYPE >::Return memberFunctionProxy( CLASSPTR that, ARGS&&... args )
+		typename util::FuncTraits< PTRTYPE >::Return memberFunctionProxy( CLASSPTR that, ARGS... args )
 		{
 			static_assert( std::is_same< typename util::FuncTraits< PTRTYPE >::FuncPtr, decltype( &memberFunctionProxy< CLASSPTR, PTRTYPE, PTR, ARGS... > ) >::value, "Incompatible?" );
 			// Can't add a space before the '*'? Weird
