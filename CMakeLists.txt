@@ -33,8 +33,6 @@ set( SRCROOT ${PROJECT_SOURCE_DIR}/src )
 
 set( INC ${INCROOT}/util/Base64.hpp
          ${INCROOT}/util/BindTuple.hpp
-		 ${INCROOT}/util/Cache.hpp
-		 ${INCROOT}/util/Cache.inl
 		 ${INCROOT}/util/Crc32.hpp
 		 ${INCROOT}/util/Endian.hpp
 		 ${INCROOT}/util/File.hpp
@@ -45,8 +43,6 @@ set( INC ${INCROOT}/util/Base64.hpp
 		 ${INCROOT}/util/Md5.hpp
 		 ${INCROOT}/util/MemberFunctionProxy.hpp
 		 ${INCROOT}/util/MemberObjectType.hpp
-		 ${INCROOT}/util/QuadTree.hpp
-		 ${INCROOT}/util/QuadTree.inl
 		 ${INCROOT}/util/StreamBufferPreserver.hpp
 		 ${INCROOT}/util/String.hpp
 		 ${INCROOT}/util/unsorted_map.hpp
