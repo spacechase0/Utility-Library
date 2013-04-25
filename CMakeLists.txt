@@ -39,10 +39,13 @@ set( INC ${INCROOT}/util/Base64.hpp
 		 ${INCROOT}/util/FuncTraits.hpp
 		 ${INCROOT}/util/GenericPlaceholder.hpp
 		 ${INCROOT}/util/IniFile.hpp
+		 ${INCROOT}/util/Logger.hpp
+		 ${INCROOT}/util/Logger.inl
 		 ${INCROOT}/util/Math.hpp
 		 ${INCROOT}/util/Md5.hpp
 		 ${INCROOT}/util/MemberFunctionProxy.hpp
 		 ${INCROOT}/util/MemberObjectType.hpp
+		 ${INCROOT}/util/Profiler.hpp
 		 ${INCROOT}/util/StreamBufferPreserver.hpp
 		 ${INCROOT}/util/String.hpp
 		 ${INCROOT}/util/unsorted_map.hpp
@@ -54,6 +57,7 @@ set( SRC ${SRCROOT}/util/Base64.cpp
 		 ${SRCROOT}/util/Endian.cpp
 		 ${SRCROOT}/util/File.cpp
 		 ${SRCROOT}/util/IniFile.cpp
+		 ${SRCROOT}/util/Logger.cpp
 		 ${SRCROOT}/util/Md5.cpp
 		 ${SRCROOT}/util/String.cpp
 		 ${SRCROOT}/util/StreamBufferPreserver.cpp )
