@@ -32,7 +32,7 @@
 #include <ctime>
 #include <SFML/System/Lock.hpp>
 #include <stdexcept>
-#include <util/Convert.h>
+#include <util/String.hpp>
 #include <windows.h>
 
 namespace util
@@ -47,7 +47,7 @@ namespace util
 		if ( !file )
 		{
 			// We can't exactly use a log for this... What if it fails to open, too?
-			throw std::runtime_error( "Failed to open \""/*data/logs/" +*/ name + "\"!" );
+			throw std::runtime_error( "Failed to open \""/*data/logs/"*/ + name + "\"!" );
 		}
 	}
 

@@ -17,7 +17,7 @@ set( VERSION_PATCH 0 )
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/include )
 
 # SFML
-find_package( SFML )
+find_package( SFML COMPONENTS system )
 if ( SFML_FOUND )
     include_directories( ${SFML_INCLUDE_DIR} )
 else()
@@ -64,6 +64,7 @@ set( SRC ${SRCROOT}/util/Base64.cpp
 
 add_library( sc0-utility SHARED ${SRC} ${INC} )
 set_target_properties( sc0-utility PROPERTIES DEBUG_POSTFIX -d )
+target_link_libraries( sc0-utility ${SFML_LIBRARIES} )
 
 # Install
 install( TARGETS sc0-utility

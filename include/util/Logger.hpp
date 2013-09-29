@@ -31,7 +31,7 @@
 #include <SFML/System/Mutex.hpp>
 #include <SFML/System/ThreadLocalPtr.hpp>
 #include <string>
-#include <util/Convert.h>
+#include <util/String.hpp>
 
 namespace util
 {
