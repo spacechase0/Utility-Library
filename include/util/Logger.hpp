@@ -52,7 +52,7 @@ namespace util
 			static void log( const std::string& str );
 			template< typename T, typename ... Args >
 			static void log( const std::string& str, T t, Args... args );
-			static void setConsoleOutput( bool theOutputConsole );
+			static void setThreadConsoleOutput( bool theOutputConsole );
 			
 		private:
 			// Non-static data

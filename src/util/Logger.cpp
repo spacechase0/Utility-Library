@@ -90,7 +90,7 @@ namespace util
 		( * threadLogger )( str );
 	}
 	
-	void Logger::setConsoleOutput( bool theOutputConsole )
+	void Logger::setThreadConsoleOutput( bool theOutputConsole )
 	{
 		threadLogger->setConsoleOutput( theOutputConsole );
 	}
