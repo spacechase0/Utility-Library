@@ -30,6 +30,7 @@
 #endif
 
 #include <ctime>
+#include <iostream>
 #include <SFML/System/Lock.hpp>
 #include <stdexcept>
 #include <util/String.hpp>
@@ -42,19 +43,31 @@ namespace util
 	sf::Mutex Logger::threadMutex;
 
 	Logger::Logger( const std::string& name )
+	   : outputConsole( true )
 	{
 		file.open( /*"data/logs/" +*/ name /*+ ".txt"*/, std::fstream::out | std::fstream::trunc );
 		if ( !file )
 		{
 			// We can't exactly use a log for this... What if it fails to open, too?
-			throw std::runtime_error( "Failed to open \""/*data/logs/"*/ + name + "\"!" );
+			std::cout << "Failed to open \"" + name + "\"!" << std::endl;
+			throw std::runtime_error( "Failed to open \"" + name + "\"!" );
 		}
 	}
 
 	void Logger::operator () ( const std::string& str )
 	{
+		if ( outputConsole )
+		{
+			std::cout << str;
+		}
+		
 		sf::Lock lock( mutex );
 		file << str << std::flush;
+	}
+	
+	void Logger::setConsoleOutput( bool theOutputConsole )
+	{
+		outputConsole = theOutputConsole;
 	}
 
 	void Logger::setName( const std::string& name, const std::string& file )
@@ -75,6 +88,11 @@ namespace util
 		}
 		
 		( * threadLogger )( str );
+	}
+	
+	void Logger::setConsoleOutput( bool theOutputConsole )
+	{
+		threadLogger->setConsoleOutput( theOutputConsole );
 	}
 	
 	void Logger::openThreadLog( const std::string& name )

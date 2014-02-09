@@ -45,16 +45,20 @@ namespace util
 			template< typename T, typename... Args >
 			void operator ()( const std::string& str, T t, Args... args );
 			
+			void setConsoleOutput( bool theOutputConsole );
+			
 			// Static interface - uses thread ID
 			static void setName( const std::string& name, const std::string& file );
 			static void log( const std::string& str );
 			template< typename T, typename ... Args >
 			static void log( const std::string& str, T t, Args... args );
+			static void setConsoleOutput( bool theOutputConsole );
 			
 		private:
 			// Non-static data
 			std::fstream file;
 			mutable sf::Mutex mutex;
+			bool outputConsole;
 			
 			// Static data
 			static sf::ThreadLocalPtr< Logger > threadLogger;
