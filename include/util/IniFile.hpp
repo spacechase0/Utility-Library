@@ -25,17 +25,16 @@
 #ifndef UTIL_INIFILE_HPP
 #define UTIL_INIFILE_HPP
 
+#include <map>
 #include <string>
-
-#include "util/unsorted_map.hpp"
 
 namespace util
 {
 	class IniFile
 	{
 		public:
-			typedef util::unsorted_map< std::string, std::string > Section;
-			typedef util::unsorted_map< std::string, Section > SectionMap;
+			typedef std::map< std::string, std::string > Section;
+			typedef std::map< std::string, Section > SectionMap;
 			
 			IniFile();
 			IniFile( const std::string& filename );

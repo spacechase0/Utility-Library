@@ -88,7 +88,7 @@ namespace util
 				std::string name = line.substr( 0, line.find( "=" ) );
 				std::string value = line.substr( line.find( "=" ) + 1 );
 				
-				currentSection.push_back( std::pair< std::string, std::string >( name, value ) );
+				currentSection.insert( std::pair< std::string, std::string >( name, value ) );
 			}
 		}
 		
@@ -135,7 +135,7 @@ namespace util
 	{
 		if ( sections.find( str ) == sections.end() )
 		{
-			sections.push_back( std::pair< std::string, Section >( str, Section() ) );
+			sections.insert( std::pair< std::string, Section >( str, Section() ) );
 		}
 		
 		return sections[ str ];
