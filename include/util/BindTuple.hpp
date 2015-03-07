@@ -5,7 +5,6 @@
 #include <tuple>
 
 // TO DO: Separate into two files
-// Am I allowed to put the license header if a lot is from that link?
 
 namespace util
 {

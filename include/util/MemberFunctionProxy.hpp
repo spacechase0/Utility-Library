@@ -21,7 +21,7 @@ namespace util
 		 *
 		 * Currently, I want to try to find a way to not have to put the reference twice. I'm not
 		 * sure if that's possible though, since constexpr functions have to also be compiled for
-		 * runtime usage (like. you can't using parameters in templates).
+		 * runtime usage (like, you can't using parameters in templates).
 		 **/
 		template< typename CLASSPTR, typename PTRTYPE, PTRTYPE PTR, typename... ARGS >
 		typename util::FuncTraits< PTRTYPE >::Return memberFunctionProxy( CLASSPTR that, ARGS... args )
