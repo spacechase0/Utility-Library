@@ -58,7 +58,7 @@ set( SRC ${SRCROOT}/util/Base64.cpp
 		 ${SRCROOT}/util/String.cpp
 		 ${SRCROOT}/util/TypeCompare.cpp )
 
-add_library( sc0-utility SHARED ${SRC} ${INC} )
+add_library( sc0-utility STATIC ${SRC} ${INC} )
 set_target_properties( sc0-utility PROPERTIES DEBUG_POSTFIX -d )
 target_link_libraries( sc0-utility ${SFML_LIBRARIES} )
 
