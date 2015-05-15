@@ -45,7 +45,8 @@ set( INC ${INCROOT}/util/Base64.hpp
 		 ${INCROOT}/util/Md5.hpp
 		 ${INCROOT}/util/MemberFunctionProxy.hpp
 		 ${INCROOT}/util/MemberObjectType.hpp
-		 ${INCROOT}/util/String.hpp )
+		 ${INCROOT}/util/String.hpp
+		 ${INCROOT}/util/TypeCompare.hpp )
 
 set( SRC ${SRCROOT}/util/Base64.cpp
          ${SRCROOT}/util/Crc32.cpp
@@ -54,7 +55,8 @@ set( SRC ${SRCROOT}/util/Base64.cpp
 		 ${SRCROOT}/util/IniFile.cpp
 		 ${SRCROOT}/util/Logger.cpp
 		 ${SRCROOT}/util/Md5.cpp
-		 ${SRCROOT}/util/String.cpp )
+		 ${SRCROOT}/util/String.cpp
+		 ${SRCROOT}/util/TypeCompare.cpp )
 
 add_library( sc0-utility SHARED ${SRC} ${INC} )
 set_target_properties( sc0-utility PROPERTIES DEBUG_POSTFIX -d )
