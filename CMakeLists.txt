@@ -46,6 +46,7 @@ set( INC ${INCROOT}/util/Base64.hpp
 		 ${INCROOT}/util/MemberFunctionProxy.hpp
 		 ${INCROOT}/util/MemberObjectType.hpp
 		 ${INCROOT}/util/String.hpp
+		 ${INCROOT}/util/String.inl
 		 ${INCROOT}/util/TypeCompare.hpp )
 
 set( SRC ${SRCROOT}/util/Base64.cpp

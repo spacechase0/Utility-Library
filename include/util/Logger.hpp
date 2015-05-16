@@ -27,7 +27,7 @@ namespace util
 			static void setName( const std::string& name, const std::string& file );
 			static void log( const std::string& str );
 			template< typename T, typename ... Args >
-			static void log( const std::string& str, T t, Args... args );
+			inline static void log( const std::string& str, T t, Args... args );
 			static void setThreadConsoleOutput( bool theOutputConsole );
 			
 		private:
@@ -46,7 +46,7 @@ namespace util
 	
 	inline void log( const std::string& str );
 	template< typename... Args >
-	void log( const std::string& str, Args... args );
+	inline void log( const std::string& str, Args... args );
 }
 
 #include "Logger.inl"
