@@ -3,7 +3,7 @@ namespace util
 	template< typename T, typename ... Args >
 	inline void Logger::operator ()( const std::string& str, T t, Args... args )
 	{
-		log( format( str, t, args... ) );
+		( * this )( format( str, t, args... ) );
 	}
 	
 	template< typename T, typename ... Args >
