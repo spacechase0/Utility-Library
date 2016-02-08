@@ -46,22 +46,9 @@ namespace util
 	
 	inline void log( const std::string& str );
 	template< typename... Args >
-	inline void log( const std::string& str, Args... args );
+	inline void log( const std::string& str, const Args&... args );
 }
 
 #include "Logger.inl"
-
-#ifndef UTIL_REMOVE_GLOBAL_LOG_FUNCTION
-inline void log( const std::string& str )
-{
-	util::log( str );
-}
-
-template< typename... Args >
-inline void log( const std::string& str, const Args&... args )
-{
-	util::log( str, args... );
-}
-#endif
 
 #endif // LOGGER_HPP
