@@ -1,3 +1,4 @@
+#include <cctype>
 #include <iomanip>
 #include <ios>
 #include <sstream>
@@ -23,6 +24,20 @@ namespace util
 		{
 			t( stream );
 		}
+	
+        inline void outputN( std::ostream& o, int curr )
+        {
+        }
+
+        template< typename T, typename... Ts >
+        void outputN( std::ostream& o, int curr, const T& t, const Ts&... ts )
+        {
+            if ( curr == 0 )
+            {
+                o << t;
+            }
+            else outputN( o, --curr, ts... );
+        }
 	}
 	
 	template< typename T, typename... ARGS >
@@ -51,33 +66,49 @@ namespace util
 	{
 		return str;
 	}
-	
-	template< typename T, typename... Args >
-	std::string format( const std::string& str, T value, Args... args )
+
+    template< typename... Args >
+    void formatStream( std::ostream& o, const std::string& str_, const Args&... args )
+    {
+        const char* str = str_.c_str();
+        int baseVar = 0;
+        for ( ; str[ 0 ] != '\0'; ++str )
+        {
+            if ( str[ 0 ] == '\\' )
+            {
+                if ( str[ 1 ] != '\0' )
+                {
+                    o << str[ 1 ];
+                    ++str;
+                }
+            }
+            else if ( str[ 0 ] == '$' )
+            {
+                int var = baseVar;
+                char next = std::toupper( str[ 1 ] );
+                if ( next >= '0' && next <= '9' )
+                {
+                    var = next - '0';
+                    ++str;
+                }
+                else if ( next >= 'A' && next <= 'Z' )
+                {
+                    var = next - 'A' + 10;
+                    ++str;
+                }
+                else ++baseVar;
+
+                priv::outputN( o, var, args... );
+            }
+            else o << str[ 0 ];
+        }
+    }
+    
+    template< typename... Args >
+	std::string format( const std::string& str, const Args&... args )
 	{
-		// TODO: Make this use a single std::stringstream
-		std::string buffer = "";
-		for ( auto it = str.begin(); it != str.end(); ++it )
-		{
-			size_t dist = std::distance( str.begin(), it );
-			
-			char cc = ( * it );
-			if ( dist >= str.size() - 1 )
-			{
-				buffer += cc;
-				break;
-			}
-			
-			char nc = ( * ( it + 1 ) );
-			if ( cc == '%' and nc != '%' )
-			{
-				buffer += util::toString( value );
-				return buffer + format( str.substr( dist + 2 ), args... );
-			}
-			
-			buffer += cc;
-		}
-		
-		return buffer;
+	    std::ostringstream ss;
+	    formatStream( ss, str, args... );
+	    return ss.str();
 	}
 }

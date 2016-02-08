@@ -1,15 +1,15 @@
 namespace util
 {
-	template< typename T, typename ... Args >
-	inline void Logger::operator ()( const std::string& str, T t, Args... args )
+	template< typename ... Args >
+	inline void Logger::operator ()( const std::string& str, const Args&... args )
 	{
-		( * this )( format( str, t, args... ) );
+		( * this )( format( str, args... ) );
 	}
 	
-	template< typename T, typename ... Args >
-	inline void Logger::log( const std::string& str, T t, Args... args )
+	template< typename ... Args >
+	inline void Logger::log( const std::string& str, const Args&... args )
 	{
-		log( format( str, t, args... ) );
+		log( format( str, args... ) );
 	}
 	
 	inline void log( const std::string& str )
@@ -18,7 +18,7 @@ namespace util
 	}
 
 	template< typename... Args >
-	inline void log( const std::string& str, Args... args )
+	inline void log( const std::string& str, const Args&... args )
 	{
 		Logger::log( str, args... );
 	}

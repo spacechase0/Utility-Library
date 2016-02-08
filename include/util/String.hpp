@@ -16,9 +16,10 @@ namespace util
 	
 	// from/toStringHex -> from/toString( ..., std::hex )
 	
-	inline std::string format( const std::string& str );
-	template< typename T, typename... Args >
-	std::string format( const std::string& str, T value, Args... args );
+	template< typename... Args >
+	void formatStream( std::ostream& o, const std::string& str, const Args&... args );
+	template< typename... Args >
+	std::string format( const std::string& str, const Args&... args );
 }
 
 #include <util/String.inl>

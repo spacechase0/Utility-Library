@@ -17,15 +17,12 @@ set( VERSION_PATCH 0 )
 include_directories( ${CMAKE_CURRENT_SOURCE_DIR}/include )
 
 # SFML
-find_package( SFML COMPONENTS system )
-if ( SFML_FOUND )
-    include_directories( ${SFML_INCLUDE_DIR} )
-else()
-	message( FATAL_ERROR "We need SFML!" )
-endif()
+set( SFML_STATIC_LIBRARIES TRUE )
+find_package( SFML COMPONENTS system REQUIRED )
+include_directories( ${SFML_INCLUDE_DIR} )
 
 # Misc
-set( CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=gnu++0x" )
+set( CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++0x" )
 
 # Build
 set( INCROOT ${PROJECT_SOURCE_DIR}/include )
@@ -61,10 +58,10 @@ set( SRC ${SRCROOT}/util/Base64.cpp
 
 add_library( sc0-utility STATIC ${SRC} ${INC} )
 set_target_properties( sc0-utility PROPERTIES DEBUG_POSTFIX -d )
-target_link_libraries( sc0-utility ${SFML_LIBRARIES} )
+target_link_libraries( sc0-utility ${SFML_LIBRARIES} ${SFML_DEPENDENCIES} )
 
 # Install
 install( TARGETS sc0-utility
-		 DESTINATION bin )
+		 DESTINATION lib )
 install( DIRECTORY include
 		 DESTINATION . )
