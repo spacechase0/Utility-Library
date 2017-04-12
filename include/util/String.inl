@@ -91,11 +91,6 @@ namespace util
                     var = next - '0';
                     ++str;
                 }
-                else if ( next >= 'A' && next <= 'Z' )
-                {
-                    var = next - 'A' + 10;
-                    ++str;
-                }
                 else ++baseVar;
 
                 priv::outputN( o, var, args... );
